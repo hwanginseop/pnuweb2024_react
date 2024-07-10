@@ -4,7 +4,8 @@ import { TiHome } from "react-icons/ti";
 // import Hello from './01/Hello';
 // import './01/Hello.css'
 // 내가 만든 component 함수는 태그가 됨 - 사용자 정의 태크
-import MyDiv from './02/MyDiv';
+// import MyDiv from './02/MyDiv';
+import CardName from './03/CardName';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         <div className="w-full grow
                         flex flex-col justify-center items-center">
           {/* <Hello /> */}
-          <MyDiv />
+          {/* <MyDiv /> */}
+          <CardName />
         </div>
         <footer className='w-full h-16
                             flex justify-center items-center
