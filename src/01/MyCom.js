@@ -1,21 +1,41 @@
-import clock from './colock.png'
-import './MyCom.css'
+import clock from './colock.png' ;
+import './MyCom.css' ;
+import { useState, useEffect } from 'react';
 
 function MyCom() {
-   const mycomDiv ={
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'column'
-      // "-" 이 기호 사용 못하고 카멜표기법으로 단어 시작마다 대문자
-   }
-   return (
-      <div style={mycomDiv}>
-         <p><img src={clock} alt='시계' style={{'width':'400px'}}/></p>
-         <p>현재 시간 : {new Date().toLocaleTimeString()}</p>
-      </div>
-   );
+  //상태 변수 선언
+  const [tm , setTm] = useState(new Date()) ;
+
+  const mycomDiv = {
+    width : '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
+  }
+
+  //컴포넌트 생성시 한번 실행
+  useEffect(()=>{
+    const timer = setInterval(()=>{//1초마다 시간을 업데이트
+      setTm(new Date()) ;
+    }, 1000) ; //단위가 밀리초 1000밀리초라서 1초임
+
+    return(() => {
+      clearInterval(timer) ;
+    });
+  }, []) ;
+
+  return (
+    <div style={mycomDiv}>
+      <p className='mycomP'>
+        <img src={clock} alt='시계' style={{'width':'400px'}} />
+      </p>
+      <p className='text-white text-lg font-bold bg-blue-800
+                    p-5'>
+        현재 시간 : {tm.toLocaleTimeString()}
+      </p>
+    </div>
+  );
 }
 
 export default MyCom ;
